@@ -1,4 +1,4 @@
-package HibernateSession.HibrenateProject2;
+package HibernateAssignment.CRUD;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
