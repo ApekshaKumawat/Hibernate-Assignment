@@ -20,8 +20,8 @@ public class HibernateUtils {
         Properties settings = new Properties();
         settings.put(Environment.DRIVER, "org.hsqldb.jdbc.JDBCDriver");
         settings.put(Environment.URL, "jdbc:hsqldb:mem:CompanyDb");
-        settings.put(Environment.USER, "sa");
-        settings.put(Environment.PASS, "sa");
+        settings.put(Environment.USER, "root");
+        settings.put(Environment.PASS, "1234");
         settings.put(Environment.SHOW_SQL, "true");
         settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
         settings.put(Environment.HBM2DDL_AUTO, "create-drop");

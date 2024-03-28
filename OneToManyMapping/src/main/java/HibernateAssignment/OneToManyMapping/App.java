@@ -13,6 +13,17 @@ import HibernateAssignment.OneToManyMapping.entity.Product;
 
 public class App 
 {
+	public static void printDetails(Session session) {
+		Query<Product> query = session.createQuery("from Product", Product.class);
+        List<Product> product = query.getResultList();
+        for (Product f : product) {
+             System.out.println("Name: " + f.getId() + 
+            		 			", Email: " + f.getName() +
+            		 			", PhoneNo: " + f.getPrice() +
+            		 			", CompanyName: " + f.getCompany().getName());
+         }
+		
+	}
     public static void main( String[] args )
     {
     	try (SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
@@ -48,11 +59,7 @@ public class App
     			session.persist(product2);
     			session.getTransaction().commit();
     			
-    			Query<Product> query = session.createQuery("from Product", Product.class);
-    	        List<Product> product = query.getResultList();
-    	        for (Product f : product) {
-    	             System.out.println("Name: " + f.getId() + ", Email: " + f.getName() + ", PhoneNo: " + f.getPrice() + ", CompanyName: " + f.getCompany().getName());
-    	         }
+    			printDetails(session);
     			
     			
          }catch(Exception e) {

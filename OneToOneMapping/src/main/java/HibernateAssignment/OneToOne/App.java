@@ -11,6 +11,19 @@ import HibernateAssignment.OneToOne.entity.ContactInfo;
 import HibernateAssignment.OneToOne.entity.Freelancer;
 
 public class App {
+	public static void printFreelancerDetails(Session session) {
+		Query<Freelancer> query = session.createQuery("from Freelancer", Freelancer.class);
+        List<Freelancer> freelancers = query.getResultList();
+        for (Freelancer f : freelancers) {
+            System.out.println("Id: " + f.getFreelancerId()+
+            				   ", Name: " + f.getFreelancerName() + 
+            				   ", Email: " + f.getContactInfo().getEmail() +
+            				   ", PhoneNo: " + f.getContactInfo().getPhoneNo()+
+            				   ", Specialization: " + f.getSpecialization());
+        }
+        
+        
+	}
     public static void main(String[] args) {
         try (SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
              Session session = sessionFactory.openSession()) {
@@ -30,12 +43,11 @@ public class App {
             session.persist(contact1);
             session.persist(freelancer1);
             session.getTransaction().commit();
+            
+            
+            printFreelancerDetails(session);
 
-            Query<Freelancer> employeeQuery = session.createQuery("from Freelancer", Freelancer.class);
-            List<Freelancer> freelancers = employeeQuery.getResultList();
-            for (Freelancer f : freelancers) {
-                System.out.println("Name: " + f.getFreelancerName() + ", Email: " + f.getContactInfo().getEmail() + ", PhoneNo: " + f.getContactInfo().getPhoneNo());
-            }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
