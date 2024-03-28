@@ -1,11 +1,7 @@
 package HibernateAssignment.ManyToManyMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 
 import HibernateAssignment.ManyToManyMapping.configuration.HibernateUtils;
 import HibernateAssignment.ManyToManyMapping.entity.Club;
@@ -50,21 +46,6 @@ public class App
                club1.setClubName("Qureka");
                club1.setCategory("Quiz");
                club1.setPresidentName("AK");
-           
-               
-//               List<Student> students = new ArrayList<>();
-//               students.add(student1);
-//               students.add(student2);
-//               
-//               List<Club> StudentClub1 = new ArrayList<>();
-//               StudentClub1.add(club1);
-//               StudentClub1.add(club2);
-//               
-//               student1.setClubs(StudentClub1);
-//               
-//               List<Club> StudentClub2 = new ArrayList<>();
-//               StudentClub2.add(club1);
-//               student2.setClubs(StudentClub2);
                
                student1.joinClub(club1);
                student1.joinClub(club2);
@@ -76,9 +57,7 @@ public class App
                session.persist(club2);
                session.getTransaction().commit();
                
-               printDetails(session,student1.getId(), student2.getId(), club1.getId(), club2.getId());
-               
-               
+               printDetails(session,student1.getId(), student2.getId(), club1.getId(), club2.getId());      
                 
             } catch (Exception e) {
                 e.printStackTrace();

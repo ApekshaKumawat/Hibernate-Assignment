@@ -16,11 +16,11 @@ public class App
 	public static void printDetails(Session session) {
 		Query<Product> query = session.createQuery("from Product", Product.class);
         List<Product> product = query.getResultList();
-        for (Product f : product) {
-             System.out.println("Name: " + f.getId() + 
-            		 			", Email: " + f.getName() +
-            		 			", PhoneNo: " + f.getPrice() +
-            		 			", CompanyName: " + f.getCompany().getName());
+        for (Product p : product) {
+             System.out.println("Name: " + p.getId() + 
+            		 			", Email: " +p.getName() +
+            		 			", PhoneNo: " + p.getPrice() +
+            		 			", CompanyName: " + p.getCompany().getName());
          }
 		
 	}
